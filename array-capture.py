@@ -4,7 +4,7 @@
 # Combined with parts of hello-world.py
 # To cross-reference numpy array with jpg image
 
-from picamera2 import Picamera2
+from picamera2 import Picamera2, Preview
 import time
 from datetime import datetime
 
