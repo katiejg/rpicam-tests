@@ -65,9 +65,10 @@ time.sleep(2) # Preview delay
 
 # Grab datetime for file naming
 curr = datetime.now().strftime("%Y-%m-%d %H%M%S")
+str_curr = str(curr)
 # Capture image as jpg
-capture_jpeg(str(curr));
+capture_jpeg(str_curr);
 # Capture image as png
-capture_png(str(curr));
+capture_png(str_curr);
 # Capture image as array to txt file
-capture_np(str(curr));
+capture_np(str_curr);
