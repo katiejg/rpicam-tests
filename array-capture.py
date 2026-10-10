@@ -5,6 +5,7 @@
 # To cross-reference numpy array with jpg image
 
 from picamera2 import Picamera2, Preview
+import numpy as np
 import time
 from datetime import datetime
 
@@ -26,5 +27,5 @@ print("JPG image captured")
 img_array = picam2.capture_array("main")
 txtfile_path = "photos/" + str(curr) + ".txt"
 with open(txtfile_path, 'w') as file:
-    file.write(img_array)
+    file.write(np.array2string(img_array, separator=','))
 print("Numpy array captured")
