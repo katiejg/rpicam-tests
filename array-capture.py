@@ -25,9 +25,9 @@ picam2.capture_file("photos/" + str(curr) + ".jpg") # Capture as jpg file
 print("JPG Image Successfully Captured")
 # Capture image as array to txt file
 img_array = picam2.capture_array("main")
-print("Printing numpy array...")
+print("Printing truncated numpy array...")
 print(img_array)
 txtfile_path = "photos/" + str(curr) + ".txt"
 with open(txtfile_path, 'w') as file:
-    file.write(np.array2string(img_array, separator=','))
+    file.write(np.array2string(img_array, separator=',', threshold=sys.maxsize))
 print("Numpy Array Successfully Captured")
