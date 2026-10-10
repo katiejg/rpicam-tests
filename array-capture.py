@@ -22,10 +22,12 @@ time.sleep(2) # Preview delay
 curr = datetime.now().strftime("%Y-%m-%d %H%M%S")
 # Capture image as jpg
 picam2.capture_file("photos/" + str(curr) + ".jpg") # Capture as jpg file
-print("JPG image captured")
+print("JPG Image Successfully Captured")
 # Capture image as array to txt file
 img_array = picam2.capture_array("main")
+print("Printing numpy array...")
+print(img_array)
 txtfile_path = "photos/" + str(curr) + ".txt"
 with open(txtfile_path, 'w') as file:
     file.write(np.array2string(img_array, separator=','))
-print("Numpy array captured")
+print("Numpy Array Successfully Captured")
