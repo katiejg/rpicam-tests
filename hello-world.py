@@ -1,6 +1,6 @@
-#
-# 2.3 A first example
-#
+"""
+2.3 A first example
+"""
 
 from picamera2 import Picamera2, Preview
 import time

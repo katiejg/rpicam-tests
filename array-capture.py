@@ -1,8 +1,10 @@
-#
-# 6.1.1 Capturing Arrays
-#
-# Combined with parts of hello-world.py
-# To cross-reference numpy array with jpg image
+"""
+6.1.1 Capturing Arrays
+
+Combined with parts of hello-world.py
+To cross-reference numpy array with jpg image
+"""
+
 
 import sys
 from picamera2 import Picamera2, Preview
