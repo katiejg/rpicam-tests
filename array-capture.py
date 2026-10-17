@@ -32,7 +32,7 @@ img_array = picam2.capture_array("main")
 # print("Printing truncated numpy array...")
 # print(img_array)
 pickle_path = "photos/" + str(curr) + ".pkl"
-with open(pickle_path, 'w') as file:
+with open(pickle_path, 'wb') as file:
     # pickle.dump(img_array, pickle_path) # Pickle with protocol 0
     pickle.dump(img_array, file, -1) # Pickle the list using the highest protocol available.
 print("Numpy Array Successfully Captured as Pickle")
