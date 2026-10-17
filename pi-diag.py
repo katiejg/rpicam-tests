@@ -88,7 +88,7 @@ def main():
     parser.add_argument("-i", "--interval", type=float, default=2.0,
                         help="seconds between readings (default 2)")
     args = parser.parse_args()
-    curr = datetime.now().strftime("%Y-%m-%d %H%M%S")   # Grab datetime for file naming
+    curr = datetime.now().strftime("%Y-%m-%d_%H%M%S")   # Grab datetime for file naming
     filepath = folderpath + "logs/" + curr + ".csv"
     with open(filepath, "w") as f:
         f.write("Timestamp,Temperature_C,Core_V,Ext5V_V,Throttle\n")
