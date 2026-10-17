@@ -15,7 +15,7 @@ from datetime import datetime
 picam2 = Picamera2()
 # TODO: Change the file path to where the photos directory is located on the system
 # Use `realpath file` in terminal
-filepath = '/home/farhorizons/Desktop/rpicam-tests'
+filepath = '/home/farhorizons/Desktop/rpicam-tests/'
 
 # ==================================================
 # HELPER FUNCTIONS
