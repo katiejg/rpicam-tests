@@ -3,8 +3,8 @@
 
 Combined with parts of hello-world.py
 To cross-reference numpy array with jpg image
+Outputs numpy array as pickle
 """
-
 
 import sys
 import pickle # want to dump numpy array as pickle

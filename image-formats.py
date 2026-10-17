@@ -6,12 +6,16 @@ Description: Playing with image formats in the picamera2 lib, spinning off of `a
 """
 
 import sys
+import os
 from picamera2 import Picamera2, Preview
 import numpy as np
 import time
 from datetime import datetime
 
 picam2 = Picamera2()
+# TODO: Change the file path to where the photos directory is located on the system
+# Use `realpath file` in terminal
+filepath = '/home/farhorizons/Desktop/rpicam-tests'
 
 # ==================================================
 # HELPER FUNCTIONS
@@ -36,12 +40,12 @@ def set_img_quality(qlty = 90, compression = 1):
 
 def capture_jpeg(fname):
     """Save photo as jpeg/jpg"""
-    picam2.capture_file("photos/" + fname + ".jpg")
+    picam2.capture_file(filepath + "photos/" + fname + ".jpg")
     print("JPG Image Successfully Captured")
 
 def capture_png(fname):
     """Save photo as png"""
-    picam2.capture_file("photos/" + fname + ".png")
+    picam2.capture_file(filepath + "photos/" + fname + ".png")
     print("PNG Image Successfully Captured")
 
 # Capture image as numpy array saved to
@@ -50,7 +54,7 @@ def capture_np(fname):
     img_array = picam2.capture_array("main")
     print("Printing truncated numpy array...")
     print(img_array)
-    txtfile_path = "photos/" + fname + ".txt"
+    txtfile_path = filepath + "photos/" + fname + ".txt"
     with open(txtfile_path, 'w') as file:
         file.write(np.array2string(img_array, separator=',', threshold=sys.maxsize))
     print("Numpy Array Successfully Captured")
