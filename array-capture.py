@@ -7,6 +7,7 @@ To cross-reference numpy array with jpg image
 
 
 import sys
+import pickle # want to dump numpy array as pickle
 from picamera2 import Picamera2, Preview
 import numpy as np
 import time
@@ -28,9 +29,10 @@ picam2.capture_file("photos/" + str(curr) + ".jpg") # Capture as jpg file
 print("JPG Image Successfully Captured")
 # Capture image as array to txt file
 img_array = picam2.capture_array("main")
-print("Printing truncated numpy array...")
-print(img_array)
-txtfile_path = "photos/" + str(curr) + ".txt"
-with open(txtfile_path, 'w') as file:
-    file.write(np.array2string(img_array, separator=',', threshold=sys.maxsize))
-print("Numpy Array Successfully Captured")
+# print("Printing truncated numpy array...")
+# print(img_array)
+pickle_path = "photos/" + str(curr) + ".pkl"
+with open(pickle_path, 'w') as file:
+    pickle.dump(img_array, pickle_path) # Pickle with protocol 0
+    pickle.dump(img_array, pickle_path, -1) # Pickle the list using the highest protocol available.
+print("Numpy Array Successfully Captured as Pickle")
