@@ -90,18 +90,18 @@ def main():
     args = parser.parse_args()
     curr = datetime.now().strftime("%Y-%m-%d %H%M%S")   # Grab datetime for file naming
     filepath = folderpath + "logs/" + curr + ".csv"
-        with open(filepath, "w") as f:
-            f.write("Timestamp,Temperature_C,Core_V,Ext5V_V,Throttle\n")
-            while True:
-                timestamp = time.strftime("%Y-%m-%d %H:%M:%S")
-                temp = read_temp_c()
-                core = read_core_volts()
-                rails = read_pmic_rails()
-                ext5v = rails.get("EXT5V_V")
-                throttle = read_throttle_state()
-                f.write(f"{timestamp},{temp:.2f},{core:.2f},{ext5v:.2f},{throttle}\n")
-                f.flush()
-                time.sleep(args.interval)  # log every interval seconds
+    with open(filepath, "w") as f:
+        f.write("Timestamp,Temperature_C,Core_V,Ext5V_V,Throttle\n")
+        while True:
+            timestamp = time.strftime("%Y-%m-%d %H:%M:%S")
+            temp = read_temp_c()
+            core = read_core_volts()
+            rails = read_pmic_rails()
+            ext5v = rails.get("EXT5V_V")
+            throttle = read_throttle_state()
+            f.write(f"{timestamp},{temp:.2f},{core:.2f},{ext5v:.2f},{throttle}\n")
+            f.flush()
+            time.sleep(args.interval)  # log every interval seconds
 
 
 if __name__ == "__main__":
