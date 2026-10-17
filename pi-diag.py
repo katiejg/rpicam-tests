@@ -79,7 +79,7 @@ def fmt(value, spec):
     return format(value, spec) if value is not None else "n/a"
 
 curr = datetime.now().strftime("%Y-%m-%d_%H%M%S")   # Grab datetime for file naming
-filepath = folderpath + "logs/" + curr + ".csv"
+filepath = "/logs/" + curr + ".csv"
 with open(filepath, "w") as f:
     f.write("Timestamp,Temperature_C,Core_V,Ext5V_V,Throttle\n")
     while True:
