@@ -112,11 +112,11 @@ def main():
                 time.sleep(2)  # log every 10 seconds
 
     # print("Raspberry Pi 5 diagnostics - Ctrl+C to stop\n")
-    except KeyboardInterrupt:
+        except KeyboardInterrupt:
         # print("\nStopped.")
-        pass
-    finally:
-        pass
+            pass
+        finally:
+            pass
 
 
 if __name__ == "__main__":
