@@ -1,12 +1,23 @@
 import time
+import subprocess
 from datetime import datetime
 from gpiozero import CPUTemperature
 
 cpu = CPUTemperature()
-folderpath = '/home/farhorizons/Desktop/rpicam-tests/'
+FOLDER_PATH = '/home/farhorizons/Desktop/rpicam-tests/'
 curr = datetime.now().strftime("%Y-%m-%d %H%M%S")   # Grab datetime for file naming
+filepath = FOLDER_PATH + "logs/" + curr + ".csv"
 
-filepath = folderpath + "temp-logs/" + curr + ".csv"
+def vcgencmd(*args):
+    """Run vcgencmd and return stdout, or None on failure."""
+    try:
+        out = subprocess.run(
+            ["vcgencmd", *args], capture_output=True, text=True, timeout=5, check=True
+        )
+        return out.stdout.strip()
+    except (FileNotFoundError, subprocess.SubprocessError):
+        return None
+
 with open("cpu_temperature_log.csv", "w") as f:
     f.write("Timestamp,Temperature_C\n")
     while True:
