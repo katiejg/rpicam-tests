@@ -32,7 +32,6 @@ THROTTLE_FLAGS = {
     19: "soft temp limit occurred",
 }
 
-
 def vcgencmd(*args):
     """Run vcgencmd and return stdout, or None on failure."""
     try:
@@ -43,7 +42,6 @@ def vcgencmd(*args):
     except (FileNotFoundError, subprocess.SubprocessError):
         return None
 
-
 def read_temp_c():
     """CPU/SoC temperature in Celsius (sysfs, falls back to vcgencmd)."""
     try:
@@ -52,7 +50,6 @@ def read_temp_c():
         out = vcgencmd("measure_temp")  # e.g. temp=48.7'C
         m = re.search(r"temp=([\d.]+)", out or "")
         return float(m.group(1)) if m else None
-
 
 def read_core_volts():
     """SoC core voltage (the Pi's internal voltage) in volts."""
@@ -73,7 +70,6 @@ def read_pmic_rails():
         rails[name] = float(val)
     return rails
 
-
 def read_throttle_state():
     """Decode get_throttled into a list of active flag descriptions."""
     out = vcgencmd("get_throttled")  # e.g. throttled=0x50005
@@ -83,10 +79,8 @@ def read_throttle_state():
     value = int(m.group(1), 16)
     return [desc for bit, desc in THROTTLE_FLAGS.items() if value & (1 << bit)]
 
-
 def fmt(value, spec):
     return format(value, spec) if value is not None else "n/a"
-
 
 def main():
     parser = argparse.ArgumentParser(description="Raspberry Pi 5 diagnostics")
@@ -110,13 +104,6 @@ def main():
                 f.write(f"{timestamp},{temp:.2f},{core:.2f},{ext5v:.2f},{throttle}\n")
                 f.flush()
                 time.sleep(2)  # log every 10 seconds
-
-    # print("Raspberry Pi 5 diagnostics - Ctrl+C to stop\n")
-        except KeyboardInterrupt:
-        # print("\nStopped.")
-            pass
-        finally:
-            pass
 
 
 if __name__ == "__main__":
