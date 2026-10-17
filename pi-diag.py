@@ -18,6 +18,7 @@ import time
 from datetime import datetime
 from pathlib import Path
 
+folderpath = '/home/farhorizons/Desktop/rpicam-tests/'
 THERMAL_PATH = Path("/sys/class/thermal/thermal_zone0/temp")
 
 # Bit meanings for `vcgencmd get_throttled`
@@ -86,12 +87,9 @@ def main():
     parser = argparse.ArgumentParser(description="Raspberry Pi 5 diagnostics")
     parser.add_argument("-i", "--interval", type=float, default=2.0,
                         help="seconds between readings (default 2)")
-    parser.add_argument("--csv", metavar="FILE", help="append readings to a CSV file")
     args = parser.parse_args()
-
-    writer = csv_file = None
-    if args.csv:
-        filepath = folderpath + "logs/" + curr + ".csv"
+    curr = datetime.now().strftime("%Y-%m-%d %H%M%S")   # Grab datetime for file naming
+    filepath = folderpath + "logs/" + curr + ".csv"
         with open(filepath, "w") as f:
             f.write("Timestamp,Temperature_C,Core_V,Ext5V_V,Throttle\n")
             while True:
@@ -103,7 +101,7 @@ def main():
                 throttle = read_throttle_state()
                 f.write(f"{timestamp},{temp:.2f},{core:.2f},{ext5v:.2f},{throttle}\n")
                 f.flush()
-                time.sleep(2)  # log every 10 seconds
+                time.sleep(args.interval)  # log every interval seconds
 
 
 if __name__ == "__main__":
