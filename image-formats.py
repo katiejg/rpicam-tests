@@ -1,7 +1,7 @@
 """
 Filename: image-formats.py
 Author: Katie Jiang
-Date: 2026-10-10
+Date: 2026-10-17
 Description: Playing with image formats in the picamera2 lib, spinning off of `array-capture.py`
 """
 
