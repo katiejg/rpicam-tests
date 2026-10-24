@@ -1,8 +1,8 @@
 """
 Filename: image-formats.py
 Author: Katie Jiang
-Date: 2026-10-17
-Description: Playing with image formats in the picamera2 lib, spinning off of `array-capture.py`
+Date: 2026-10-23
+Description: Current start up script. Captures jpg/png/pkl image every ~3 seconds until interrupted.
 """
 
 import sys
