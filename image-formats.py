@@ -86,7 +86,7 @@ try:
         capture_jpeg(str(curr));    # Capture image as jpg
         capture_png(str(curr));     # Capture image as png
         # capture_np(str(curr));      # Capture image as array to txt file
-        # capture_pkl(str(curr));
+        capture_pkl(str(curr));
         time.sleep(2) # Interval
 except KeyboardInterrupt:
     pass
