@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # ===============================
-# CLAUDE CODE
+# CLAUDE-GENERATED CODE
 # ===============================
 """Raspberry Pi 5 diagnostic monitor: temperature, voltages, throttle state.
 """

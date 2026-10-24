@@ -66,7 +66,7 @@ def capture_pkl(fname):
     img_array = picam2.capture_array("main")
     # print("Printing truncated numpy array...")
     # print(img_array)
-    pickle_path = "photos/" + fname + ".pkl"
+    pickle_path = filepath + "photos/" + fname + ".pkl"
     with open(pickle_path, 'wb') as file:
         # pickle.dump(img_array, pickle_path) # Pickle with protocol 0
         pickle.dump(img_array, file, -1) # Pickle the list using the highest protocol available.
