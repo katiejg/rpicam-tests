@@ -12,7 +12,7 @@ from datetime import datetime
 picam2 = Picamera2()
 
 exposure_us = 10_000_000  # 20 seconds
-ctrl_1 = {
+ctrls = {
     "AeEnable": False,
     "AwbEnable": False,
     "ExposureTime": exposure_us,
@@ -21,7 +21,6 @@ ctrl_1 = {
     "NoiseReductionMode": 0,
     "Sharpness": 0.0,
 }
-ctrls = ctrl_1; # ctrls are what is actually configured!
 
 def set_img_quality(qlty = 90, compression = 1):
     """Set jpeg quality (0-95) and png compression level (0-9)
