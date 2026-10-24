@@ -5,11 +5,13 @@ Date: 2026-10-23
 Description: Playing with camera configuration
 """
 
-from picamera2 import Picamera2, Preview
+from picamera2 import Picamera2
 import time
 from datetime import datetime
 
-exposure_us = 20_000_000  # 20 seconds
+picam2 = Picamera2()
+
+exposure_us = 10_000_000  # 20 seconds
 ctrl_1 = {
     "AeEnable": False,
     "AwbEnable": False,
@@ -19,10 +21,20 @@ ctrl_1 = {
     "NoiseReductionMode": 0,
     "Sharpness": 0.0,
 }
-
 ctrls = ctrl_1; # ctrls are what is actually configured!
 
-picam2 = Picamera2()
+def set_img_quality(qlty = 90, compression = 1):
+    """Set jpeg quality (0-95) and png compression level (0-9)
+    Call before picam2.start()
+    """
+    # Some data validation...
+    if (qlty < 0 or qlty > 95):
+        return
+    if (compression > 9 or compression < 0):
+        return
+    picam2.options["quality"] = qlty
+    picam2.options["compression_level"] = compression
+
 camera_config = picam2.create_still_configuration()
 picam2.configure(camera_config)
 set_img_quality(95, 0) # highest quality, no compression
