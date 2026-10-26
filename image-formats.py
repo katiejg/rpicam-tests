@@ -60,7 +60,7 @@ def capture_np(fname):
 
 # Capture image as numpy array saved as pickle
 def capture_pkl(fname):
-    """Save photo as numpy array in txt file"""
+    """Save photo as numpy array in pickle"""
     img_array = picam2.capture_array("main")
     # print("Printing truncated numpy array...")
     # print(img_array)
@@ -78,13 +78,8 @@ set_img_quality(95, 0) # highest quality, no compression
 # Start camera
 try:
     picam2.start()
-    while True:
-        time.sleep(1) # Preview delay
-        curr = datetime.now().strftime("%Y-%m-%d %H%M%S")   # Grab datetime for file naming
-        capture_jpeg(str(curr))    # Capture image as jpg
-        capture_png(str(curr))     # Capture image as png
-        # capture_np(str(curr));      # Capture image as array to txt file
-        capture_pkl(str(curr))
-        time.sleep(2) # Interval
-except KeyboardInterrupt:
-    pass
+    time.sleep(1) # Preview delay
+    curr = datetime.now().strftime("%Y-%m-%d %H%M%S")   # Grab datetime for file naming
+    capture_jpeg(str(curr))    # Capture image as jpg
+    capture_png(str(curr))     # Capture image as png
+    capture_pkl(str(curr))

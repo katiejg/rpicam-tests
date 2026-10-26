@@ -13,8 +13,8 @@ picam2 = Picamera2()
 
 exposure_us = 10_000_000  # 20 seconds
 ctrls = {
-    "AeEnable": False,
-    "AwbEnable": False,
+    "AeEnable": False, # no autoexposure
+    "AwbEnable": False, # no auto white balance
     "ExposureTime": exposure_us,
     "AnalogueGain": 1.0,
     "FrameDurationLimits": (exposure_us + 1000, exposure_us + 1000),
