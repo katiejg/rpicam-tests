@@ -59,7 +59,7 @@ def capture_pkl(fname):
 # CONFIGURATION
 # ============================================================
 
-exposure_s = 5 # 5 seconds
+exposure_s = 1 # 5 seconds
 exposure_us = exposure_s * 1_000_000
 ctrls = {
     "AeEnable": False, # no autoexposure
@@ -89,6 +89,6 @@ try:
         capture_jpeg(str(curr))    # Capture image as jpg
         capture_png(str(curr))     # Capture image as png
         capture_pkl(str(curr))     # Capture image as pickle
-        time.sleep(exposure_s) # Interval
+        # time.sleep(exposure_s) # Interval
 except KeyboardInterrupt:
     pass
