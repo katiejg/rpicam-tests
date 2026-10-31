@@ -2,7 +2,7 @@
 Filename: image-formats.py
 Author: Katie Jiang
 Date: 2026-10-23
-Description: Current start up script. Captures jpg/png/pkl image every ~3 seconds until interrupted.
+Description: Captures jpg/png/pkl image every ~3 seconds until interrupted.
 """
 
 import sys

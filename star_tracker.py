@@ -54,6 +54,7 @@ def capture_pkl(fname):
         # pickle.dump(img_array, pickle_path) # Pickle with protocol 0
         pickle.dump(img_array, file, -1) # Pickle the list using the highest protocol available.
     print("Numpy Array Successfully Captured as Pickle")
+    # TODO: Convert numpy array to jpeg to ensure they are the same photo
 
 # ============================================================
 # CONFIGURATION
@@ -66,6 +67,7 @@ ctrls = {
     "AwbEnable": False, # no auto white balance
     "ExposureTime": exposure_us,
     "AnalogueGain": 1.0,
+    # max + min time (us) that sensor can take to deliver a frame
     "FrameDurationLimits": (exposure_us + 1000, exposure_us + 1000),
     "NoiseReductionMode": 0,
     "Sharpness": 0.0,
@@ -84,11 +86,12 @@ picam2.set_controls(ctrls);
 try:
     picam2.start()
     while True:
-        time.sleep(1) # Preview delay
+        # time.sleep(1) # Preview delay
+        # TODO: get fractional seconds
         curr = datetime.now().strftime("%Y-%m-%d %H%M%S")   # Grab datetime for file naming
         capture_jpeg(str(curr))    # Capture image as jpg
         # capture_png(str(curr))     # Capture image as png
         capture_pkl(str(curr))     # Capture image as pickle
-        # time.sleep(exposure_s) # Interval
+        time.sleep(exposure_s) # Interval
 except KeyboardInterrupt:
     pass
