@@ -60,7 +60,7 @@ def capture_pkl(fname):
 # ============================================================
 
 exposure_s = 5 # 5 seconds
-exposure_us = exposure_s * 1_000_000  # 10 seconds
+exposure_us = exposure_s * 1_000_000
 ctrls = {
     "AeEnable": False, # no autoexposure
     "AwbEnable": False, # no auto white balance
@@ -73,7 +73,6 @@ ctrls = {
 
 camera_config = picam2.create_still_configuration()
 picam2.configure(camera_config)
-# preview_qtgl() # Comment to turn off preview
 set_img_quality(95, 0) # highest quality, no compression
 picam2.set_controls(ctrls);
 
@@ -89,7 +88,7 @@ try:
         curr = datetime.now().strftime("%Y-%m-%d %H%M%S")   # Grab datetime for file naming
         capture_jpeg(str(curr))    # Capture image as jpg
         capture_png(str(curr))     # Capture image as png
-        capture_pkl(str(curr))
+        capture_pkl(str(curr))     # Capture image as pickle
         time.sleep(exposure_s) # Interval
 except KeyboardInterrupt:
     pass
