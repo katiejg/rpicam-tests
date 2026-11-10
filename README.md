@@ -1,5 +1,8 @@
 Experiments with a Raspberry Pi 5 and High Quality Camera (Sony IMX477) module.
 
+## Running a script
+This repository should be in the Desktop of the Raspberry Pi. In terminal, `cd` to the repository. Once you are in the folder, you can simply enter `python script_name.py` to run the script.
+
 ## Operating the Raspberry Pi
 1. Power the Raspberry Pi on (indicated by the green light on the board)
 2. It automatically runs the [star_tracker.py](https://github.com/katiejg/rpicam-tests/blob/experimental/star_tracker.py) script at start using the [autostart](https://learn.sparkfun.com/tutorials/how-to-run-a-raspberry-pi-program-on-startup/all#method-2-autostart) method
@@ -13,7 +16,7 @@ The easiest way to connect to the Pi is to use USB cables and an HDMI cable and 
 **SSH**
 You can log into the Pi from your own laptop by entering `ssh farhorizons@pi-ip-address` into a terminal. This will give you terminal access to the Pi, but does not have a GUI.
 **TigerVNC**
-Requires installation of TigerVNC on your own laptop and allows you to access the GUI of the Pi
+Requires installation of TigerVNC on your own laptop and allows you to access the GUI of the Pi.
 
 ## References
 - [Picamera2 Library Manual](https://datasheets.raspberrypi.com/camera/picamera2-manual.pdf)
