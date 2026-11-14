@@ -19,9 +19,19 @@ picam2 = Picamera2()
 # Use `realpath file` in terminal
 filepath = '/home/farhorizons/Desktop/rpicam-tests/'
 
-# Configuration
-capture_config = picam2.create_still_configuration()
-picam2.configure(capture_config)
+# ==================================================
+# HELPER FUNCTIONS
+# ==================================================
+def set_img_quality(qlty = 90, compression = 1):
+    """Set jpeg quality (0-95) and png compression level (0-9)
+    Call before picam2.start()
+    """
+    if (qlty < 0 or qlty > 95):
+        return
+    if (compression > 9 or compression < 0):
+        return
+    picam2.options["quality"] = qlty
+    picam2.options["compression_level"] = compression
 
 def to_pkl(fname, img_array):
     """Capture image as numpy array saved as pickle"""
@@ -44,6 +54,30 @@ def to_jpg(fname, img, metadata):
     picam2.helpers.save(img, metadata, img_path)
     print("Frame Successfully Saved as JPG")
 
+# ==================================================
+# CONFIGURATION
+# ==================================================
+exposure_s = 1 # 1 second
+exposure_us = exposure_s * 1_000_000
+ctrls = {
+    "AeEnable": False, # no autoexposure
+    "AwbEnable": False, # no auto white balance
+    "ExposureTime": exposure_us,
+    "AnalogueGain": 1.0,
+    # min + max time (us) that sensor can take to deliver a frame
+    "FrameDurationLimits": (exposure_us + 1000, exposure_us + 1000),
+    "NoiseReductionMode": 0,
+    "Sharpness": 0.0,
+}
+
+camera_config = picam2.create_still_configuration()
+picam2.configure(camera_config)
+set_img_quality(95, 0) # highest quality, no compression
+picam2.set_controls(ctrls);
+
+# ==================================================
+# MAIN
+# ==================================================
 # Start camera
 try:
     picam2.start()

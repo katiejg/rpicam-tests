@@ -7,6 +7,8 @@ Here is a description of the files in this repository:
 - `logs`: folder to store diagnostics
 - `photos`: folder to store images
 - `tools`: Python scripts for quick tasks or modular development
-  - array-capture.py
-  - cam-config.py
+  - `array-capture.py`
+  - `cam-config.py`
+  - `diagnostic.py`
+  - `hello-world.py` 
 - `star_tracker.py`: current startup program

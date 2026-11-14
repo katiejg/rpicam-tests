@@ -7,6 +7,7 @@
 ## Features to Add
 - Enable arguments for `star_tracker.py`
   - exposure time
+  - bool for preview window
 
 ## Bugs To Fix
 - `image-formats.py` -> Syntax Error on line 85, expected 'except' or 'finally' block
