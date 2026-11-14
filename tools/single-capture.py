@@ -82,11 +82,12 @@ picam2.set_controls(ctrls);
 try:
     picam2.start()
     curr = datetime.now().strftime("%Y-%m-%d %H%M%S")   # Grab datetime for file naming
-    buffer = picam2.capture_buffer()
-    metadata = picam2.capture_metadata()
-    img_array = picam2.helpers.make_array(buffer, camera_config)
+
+    request = picam2.capture_request()
+    metadata = request.get_metadata()
+    img_array = request.make_array("main")
     to_pkl(str(curr), img_array)
-    img = picam2.helpers.make_image(buffer, camera_config)
+    img = request.make_image("main")
     to_jpg(str(curr),img, metadata)
 except KeyboardInterrupt:
     pass
