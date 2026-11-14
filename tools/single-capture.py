@@ -70,7 +70,7 @@ ctrls = {
     "Sharpness": 0.0,
 }
 
-camera_config = picam2.create_preview_configuration()
+camera_config = picam2.create_still_configuration()
 picam2.configure(camera_config)
 set_img_quality(95, 0) # highest quality, no compression
 picam2.set_controls(ctrls);
@@ -84,9 +84,9 @@ try:
     curr = datetime.now().strftime("%Y-%m-%d %H%M%S")   # Grab datetime for file naming
     buffer = picam2.capture_buffer()
     metadata = picam2.capture_metadata()
-    img_array = picam2.helpers.make_array(buffer, picam2.camera_configuration())
+    img_array = picam2.helpers.make_array(buffer, camera_config)
     to_pkl(str(curr), img_array)
-    img = picam2.helpers.make_image(buffer, picam2.camera_configuration())
+    img = picam2.helpers.make_image(buffer, camera_config)
     to_jpg(str(curr),img, metadata)
 except KeyboardInterrupt:
     pass
