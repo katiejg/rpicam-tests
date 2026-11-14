@@ -2,7 +2,7 @@
 Filename: main.py
 Author: Katie Jiang
 Date: 2026-10-24
-Description: Intended start up script. Captures jpg/png/pkl image every ~3 seconds until interrupted.
+Description: Intended start up script. Captures jpg/png/pkl image every ~second until interrupted.
 """
 
 import sys
@@ -60,7 +60,7 @@ def capture_pkl(fname):
 # CONFIGURATION
 # ============================================================
 
-exposure_s = 5 # 5 seconds
+exposure_s = 1 # 1 second
 exposure_us = exposure_s * 1_000_000
 ctrls = {
     "AeEnable": False, # no autoexposure

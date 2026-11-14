@@ -83,3 +83,5 @@ try:
     capture_jpeg(str(curr))    # Capture image as jpg
     capture_png(str(curr))     # Capture image as png
     capture_pkl(str(curr))
+except KeyboardInterrupt:
+    pass
