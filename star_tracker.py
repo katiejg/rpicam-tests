@@ -86,7 +86,6 @@ picam2.set_controls(ctrls);
 try:
     picam2.start()
     while True:
-        # time.sleep(1) # Preview delay
         # TODO: get fractional seconds
         curr = datetime.now().strftime("%Y-%m-%d %H%M%S")   # Grab datetime for file naming
         capture_jpeg(str(curr))    # Capture image as jpg

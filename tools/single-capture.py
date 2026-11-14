@@ -2,7 +2,7 @@
 """
 Filename: single-capture.py
 Author: Katie Jiang
-Date: 2026-10-31
+Date: 2026-11-14
 Description: Captures and saves one frame as both a jpg and pkl. See "6.3. Capturing multiple images at once" in the Picamera2 module.
 """
 
@@ -84,9 +84,9 @@ try:
     curr = datetime.now().strftime("%Y-%m-%d %H%M%S")   # Grab datetime for file naming
     buffer = picam2.capture_buffer()
     metadata = picam2.capture_metadata()
-    img_array = picam2.helpers.make_array()
-    to_pkl(img_array)
+    img_array = picam2.helpers.make_array(buffer, picam2.camera_configuration())
+    to_pkl(str(curr), img_array)
     img = picam2.helpers.make_image(buffer, picam2.camera_configuration())
-    to_jpg(img, metadata)
+    to_jpg(str(curr),img, metadata)
 except KeyboardInterrupt:
     pass

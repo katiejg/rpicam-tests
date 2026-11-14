@@ -13,9 +13,9 @@ This repository should be in the Desktop of the Raspberry Pi. In terminal, `cd` 
 The easiest way to connect to the Pi is to use USB cables and an HDMI cable and plug in a monitor, a mouse, and keyboard. Then, you simply log in like a normal computer.
 ### Remote Access
 [Here is a full reference](https://www.raspberrypi.com/documentation/computers/remote-access.html#introduction-to-remote-access) for how to access the Pi remotely. This requires the Raspberry Pi and your own laptop to be on the same network. The Raspberry I will explain each briefly below:
-**SSH**
+#### **SSH**
 You can log into the Pi from your own laptop by entering `ssh username@pi.ip.address` into a terminal. This will give you terminal access to the Pi, but does not have a GUI.
-**TigerVNC**
+#### **TigerVNC**
 Requires installation of TigerVNC on your own laptop and allows you to access the GUI of the Pi.
 
 ## References
