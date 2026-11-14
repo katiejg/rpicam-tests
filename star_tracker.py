@@ -33,22 +33,18 @@ def set_img_quality(qlty = 90, compression = 1):
     picam2.options["quality"] = qlty
     picam2.options["compression_level"] = compression
 
-def capture_jpeg(fname):
+def capture_jpeg(fname, request):
     """Save photo as jpeg/jpg"""
-    picam2.capture_file(filepath + "photos/" + fname + ".jpg")
+    metadata = request.get_metadata()
+    img = request.make_image("main")
+    img_path = filepath + "photos/" + fname + ".jpg"
+    picam2.helpers.save(img, metadata, img_path)
     print("JPG Image Successfully Captured")
 
-def capture_png(fname):
-    """Save photo as png"""
-    picam2.capture_file(filepath + "photos/" + fname + ".png")
-    print("PNG Image Successfully Captured")
-
 # Capture image as numpy array saved as pickle
-def capture_pkl(fname):
+def capture_pkl(fname, request):
     """Save photo as numpy array in txt file"""
-    img_array = picam2.capture_array("main")
-    # print("Printing truncated numpy array...")
-    # print(img_array)
+    img_array = request.make_array("main")
     pickle_path = filepath + "photos/" + fname + ".pkl"
     with open(pickle_path, 'wb') as file:
         # pickle.dump(img_array, pickle_path) # Pickle with protocol 0
@@ -88,9 +84,10 @@ try:
     while True:
         # TODO: get fractional seconds
         curr = datetime.now().strftime("%Y-%m-%d %H%M%S")   # Grab datetime for file naming
-        capture_jpeg(str(curr))    # Capture image as jpg
-        # capture_png(str(curr))     # Capture image as png
-        capture_pkl(str(curr))     # Capture image as pickle
+        request = picam2.capture_request()
+        capture_jpeg(str(curr), request)    # Capture image as jpg
+        capture_pkl(str(curr), request)     # Capture image as pickle
+        request.release()
         time.sleep(exposure_s) # Interval
 except KeyboardInterrupt:
     pass

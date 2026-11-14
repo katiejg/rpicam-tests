@@ -68,12 +68,12 @@ set_img_quality(95, 0) # highest quality, no compression
 try:
     picam2.start()
     curr = datetime.now().strftime("%Y-%m-%d %H%M%S")   # Grab datetime for file naming
-
     request = picam2.capture_request()
     metadata = request.get_metadata()
     img_array = request.make_array("main")
     to_pkl(str(curr), img_array)
     img = request.make_image("main")
     to_jpg(str(curr),img, metadata)
+    request.release()
 except KeyboardInterrupt:
     pass
