@@ -70,7 +70,7 @@ ctrls = {
     "Sharpness": 0.0,
 }
 
-camera_config = picam2.create_still_configuration()
+camera_config = picam2.create_preview_configuration()
 picam2.configure(camera_config)
 set_img_quality(95, 0) # highest quality, no compression
 picam2.set_controls(ctrls);
