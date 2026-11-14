@@ -57,23 +57,9 @@ def to_jpg(fname, img, metadata):
 # ==================================================
 # CONFIGURATION
 # ==================================================
-exposure_s = 1 # 1 second
-exposure_us = exposure_s * 1_000_000
-ctrls = {
-    "AeEnable": False, # no autoexposure
-    "AwbEnable": False, # no auto white balance
-    "ExposureTime": exposure_us,
-    "AnalogueGain": 1.0,
-    # min + max time (us) that sensor can take to deliver a frame
-    "FrameDurationLimits": (exposure_us + 1000, exposure_us + 1000),
-    "NoiseReductionMode": 0,
-    "Sharpness": 0.0,
-}
-
 camera_config = picam2.create_still_configuration()
 picam2.configure(camera_config)
 set_img_quality(95, 0) # highest quality, no compression
-picam2.set_controls(ctrls);
 
 # ==================================================
 # MAIN
