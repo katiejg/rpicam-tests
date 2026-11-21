@@ -44,7 +44,7 @@ def capture_jpeg(fname, request):
 # Capture image as numpy array saved as pickle
 def capture_pkl(fname, request):
     """Save photo as numpy array in txt file"""
-    img_array = request.make_buffer("main")
+    img_array = request.make_array("main")
     pickle_path = filepath + "photos/" + fname + ".pkl"
     with open(pickle_path, 'wb') as file:
         # pickle.dump(img_array, pickle_path) # Pickle with protocol 0
@@ -89,7 +89,7 @@ try:
         curr = datetime.now().strftime("%Y-%m-%d %H%M%S")   # Grab datetime for file naming
         request = picam2.capture_request()
         capture_jpeg(str(curr), request)    # Capture image as jpg
-        capture_pkl(str(curr), request)     # Capture image as pickle
+        # capture_pkl(str(curr), request)     # Capture image as pickle
         request.release()
         time.sleep(exposure_s) # Interval
 except KeyboardInterrupt:
