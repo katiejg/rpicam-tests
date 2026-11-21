@@ -121,7 +121,7 @@ def fmt(value, spec):
 curr = datetime.now().strftime("%Y-%m-%d_%H%M%S")   # Grab datetime for file naming
 filepath = folderpath + "logs/" + curr + ".csv"
 with open(filepath, "w") as f:
-    f.write("Timestamp,Temperature_C,Core_V,Ext5V_V,ThrottlemROM,Temperature_C,Temperature_F\n")
+    f.write("Timestamp,Temperature_C,Core_V,Ext5V_V,Throttle,ROM,Temperature_C,Temperature_F\n")
     while True:
         timestamp = time.strftime("%Y-%m-%d %H:%M:%S")
         temp = read_temp_c()
