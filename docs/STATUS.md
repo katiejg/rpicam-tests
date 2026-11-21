@@ -3,8 +3,11 @@
   - Can run `diagnostic.py` in the background of any camera script
 - Currently `star_tracker.py` captures an array and then captures a jpeg, one right after another
   - Ideally, we would capture the frame once and save it in the two formats -> developing now in `single-capture.py`
+  
+## 
 
 ## Features to Add
+- Write a horrible calculation line for us to test load
 - Enable arguments for `star_tracker.py`
   - exposure time
   - bool for preview window

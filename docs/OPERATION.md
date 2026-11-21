@@ -8,6 +8,12 @@ This repository should be in the Desktop of the Raspberry Pi. In terminal, `cd` 
 2. It automatically runs the [star_tracker.py](https://github.com/katiejg/rpicam-tests/blob/experimental/star_tracker.py) script at start using the [autostart](https://learn.sparkfun.com/tutorials/how-to-run-a-raspberry-pi-program-on-startup/all#method-2-autostart) method
 3. To stop this program, you need to log into the GUI of the Pi. There should be a terminal open once you log in. Press Ctrl+C while in the terminal too interrupt the program.
 
+Another way to stop the script:
+1. Open terminal
+2. Enter `sudo ps -ax | grep python`
+3. Find the process ID that matches the Python script
+4. Enter `sudo kill <PID>` to end the program
+
 ## Logging into the Raspberry Pi
 ### Connect display and input devices
 The easiest way to connect to the Pi is to use USB cables and an HDMI cable and plug in a monitor, a mouse, and keyboard. Then, you simply log in like a normal computer.
