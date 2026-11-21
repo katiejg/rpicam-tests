@@ -45,6 +45,7 @@ def capture_jpeg(fname, request):
 def capture_pkl(fname, request):
     """Save photo as numpy array in txt file"""
     img_array = request.make_array("raw")
+    print(f"Array shape: {img_array.shape}")
     pickle_path = filepath + "photos/" + fname + ".pkl"
     with open(pickle_path, 'wb') as file:
         # pickle.dump(img_array, pickle_path) # Pickle with protocol 0
