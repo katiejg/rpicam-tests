@@ -9,6 +9,7 @@ Description: Captures and saves one frame as both a jpg and pkl. See "6.3. Captu
 import sys
 import os
 import pickle # want to dump numpy array as pickle
+import rawpy
 from picamera2 import Picamera2, Preview
 import numpy as np
 import time
@@ -54,6 +55,16 @@ def to_jpg(fname, img, metadata):
     picam2.helpers.save(img, metadata, img_path)
     print("Frame Successfully Saved as JPG")
 
+# Capture image as DNG and save as pickled numpy array
+def dng_to_pkl(dng_path):
+    """Save photo as dng"""
+    with rawpy.imread("image.dng") as raw:
+        bayer = raw.raw_image_visible.copy()  # shape (H, W), uint16
+    pickle_path = filepath + "photos/" + fname + ".pkl"
+    with open(pickle_path, 'wb') as file:
+        pickle.dump(bayer, file, -1) # Pickle the list using the highest protocol available.
+    print("DNG Successfully Captured as Pickle")
+
 # ==================================================
 # CONFIGURATION
 # ==================================================
@@ -70,8 +81,11 @@ try:
     curr = datetime.now().strftime("%Y-%m-%d %H%M%S")   # Grab datetime for file naming
     request = picam2.capture_request()
     metadata = request.get_metadata()
-    img_array = request.make_array("main")
-    to_pkl(str(curr), img_array)
+    # img_array = request.make_array("main")
+    # to_pkl(str(curr), img_array)
+    dng_path = filepath + "photos/" + str(curr) + ".dng"
+    request.save_dng(dng_path)
+    dng_to_pkl(dng_path)
     img = request.make_image("main")
     to_jpg(str(curr),img, metadata)
     request.release()
