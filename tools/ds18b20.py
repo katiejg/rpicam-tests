@@ -56,7 +56,7 @@ def read_temp(index):
 curr = datetime.now().strftime("%Y-%m-%d_%H%M%S")   # Grab datetime for file naming
 filepath = folderpath + "logs/ds18b20_" + curr + ".csv"
 with open(filepath, "w") as f:
-    f.write("Timestamp,ROM[0],Temperature_C,Temperature_F,ROM[1]\n")
+    f.write("Timestamp,ROM[0],Temperature_C[0],Temperature_F[0],ROM[1],Temperature_C[1],Temperature_F[1]\n")
     while True:
         timestamp = time.strftime("%Y-%m-%d %H:%M:%S")
         rom0 = read_rom(0)
