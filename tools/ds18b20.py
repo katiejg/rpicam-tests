@@ -59,4 +59,4 @@ with open(filepath, "w") as f:
         temp_c, temp_f = read_temp()
         f.write(f"{timestamp},{rom},{temp_c:.3f},{temp_f:.3f}\n")
         f.flush()
-        time.sleep(5)  # log every 2 seconds
+        time.sleep(2)  # log every 2 seconds
