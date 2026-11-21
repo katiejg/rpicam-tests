@@ -1,8 +1,8 @@
 """
 Filename: main.py
 Author: Katie Jiang
-Date: 2026-10-24
-Description: Intended start up script. Captures jpg/png/pkl image every ~second until interrupted.
+Date: 2026-11-21
+Description: Intended start up script. Captures jpg/pkl image every ~second until interrupted.
 """
 
 import sys
@@ -22,7 +22,7 @@ filepath = '/home/farhorizons/Desktop/rpicam-tests/'
 # HELPER FUNCTIONS
 # ============================================================
 
-def set_img_quality(qlty = 90, compression = 1):
+def set_img_quality(qlty = 90, compression = 1): # default values from PiCamera2
     """Set jpeg quality (0-95) and png compression level (0-9)
     Call before picam2.start()
     """
@@ -58,6 +58,8 @@ def capture_pkl(fname, request):
 
 exposure_s = 1 # 1 second
 exposure_us = exposure_s * 1_000_000
+# HQ Camera Module does not support autofocus
+# Attempting to set the af control will fail.
 ctrls = {
     "AeEnable": False, # no autoexposure
     "AwbEnable": False, # no auto white balance
@@ -65,8 +67,9 @@ ctrls = {
     "AnalogueGain": 1.0,
     # max + min time (us) that sensor can take to deliver a frame
     "FrameDurationLimits": (exposure_us + 1000, exposure_us + 1000),
-    "NoiseReductionMode": 0,
+    "NoiseReductionMode": 0, # draft.NoiseReductionModeEnum.Off
     "Sharpness": 0.0,
+    # HDR mode is disabled by default
 }
 
 camera_config = picam2.create_still_configuration()

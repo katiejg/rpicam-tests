@@ -13,12 +13,13 @@ Another way to stop the script:
 2. Enter `sudo ps -ax | grep python`
 3. Find the process ID that matches the Python script
 4. Enter `sudo kill <PID>` to end the program
+  > Don't forget to also kill the associated XTerm process if there is one!
 
 ## Logging into the Raspberry Pi
 ### Connect display and input devices
 The easiest way to connect to the Pi is to use USB cables and an HDMI cable and plug in a monitor, a mouse, and keyboard. Then, you simply log in like a normal computer.
 ### Remote Access
-[Here is a full reference](https://www.raspberrypi.com/documentation/computers/remote-access.html#introduction-to-remote-access) for how to access the Pi remotely. This requires the Raspberry Pi and your own laptop to be on the same network. The Raspberry I will explain each briefly below:
+[Here is a full reference](https://www.raspberrypi.com/documentation/computers/remote-access.html#introduction-to-remote-access) for how to access the Pi remotely. This requires the Raspberry Pi and your own laptop to be **on the same network**. The Raspberry I will explain each briefly below:
 #### **SSH**
 You can log into the Pi from your own laptop by entering `ssh username@pi.ip.address` into a terminal. This will give you terminal access to the Pi, but does not have a GUI.
 #### **TigerVNC**
