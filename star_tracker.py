@@ -45,11 +45,11 @@ def capture_jpeg(fname, request):
 def capture_pkl(fname, request):
     """Save photo as numpy array in txt file"""
     raw_buf = request.make_array("raw")
+    w, h = picam2.camera_configuration()["raw"]["size"] # should be (4056, 3040)
     if raw_buf.dtype == np.uint8:
         raw_buf = raw_buf.view(np.uint16)
     bayer = np.ascontiguousarray(raw_buf[:h, :w]) # (3040, 4056), uint16, 12-bit values
     print(f"Array shape: {bayer.shape}")
-    # Is this packed (one after another) or padded?
     pickle_path = filepath + "photos/" + fname + ".pkl"
     with open(pickle_path, 'wb') as file:
         # pickle.dump(img_array, pickle_path) # Pickle with protocol 0
@@ -78,6 +78,7 @@ ctrls = {
 }
 
 camera_config = picam2.create_still_configuration(
+        # To request packed, use 'SRGGB12P' instead of
         raw={'format': 'SRGGB12', 'size': (4056, 3040)}
 )
 picam2.configure(camera_config)
