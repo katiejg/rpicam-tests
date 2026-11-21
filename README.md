@@ -10,5 +10,6 @@ Here is a description of the files in this repository:
   - `array-capture.py`
   - `cam-config.py`
   - `diagnostic.py`
+  - `ds18b20.py`: for temperature sensor capture
   - `hello-world.py` 
 - `star_tracker.py`: current startup program
